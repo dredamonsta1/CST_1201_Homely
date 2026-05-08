@@ -1,0 +1,13 @@
+# Compiled output — never commit these
+out/
+*.class
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# macOS noise
+.DS_Store
