@@ -47,13 +47,9 @@ public class Main {
             System.out.println("  CLEANFEE5 — $5  flat off any rental");
         System.out.println();
 
-        
-       
     };
     
-    
     // printWelcomeMessage.run();
-    
 
         // ── Booking 1: Short-Term Room ──────────────────────────────────────
         Runnable bookShortTermRoom = () -> {
@@ -65,21 +61,8 @@ public class Main {
         // bookShortTermRoom.run();
 
 
-    
 
 
-
-
-    int roomChoice = readInt(scanner);
-    RoomRental chosenRoom = (roomChoice == 2) ? cozyCabin : beachRoom;
-
-    // System.out.print("Number of nights: ");
-    // int nights = readInt(scanner);
-
-    // System.out.print("Discount code (Enter to skip): ");
-    // String roomCode = scanner.nextLine().trim();
-
-    // service.book(chosenRoom,nights,roomCode);
 
     Runnable bookLongTermApartment = () -> {
     // // ── Booking 2: Long-Term Apartment ──────────────────────────────────
@@ -97,12 +80,12 @@ public class Main {
         System.out.println("  2. Long-Term Apartment");
         System.out.print("Enter choice (1 or 2): ");
 
-        if (readInt(scanner) == 2) {
+        int choice = readInt(scanner);
+
+        if (choice == 2) {
             bookLongTermApartment.run();
-            // System.out.println("You selected: Long-Term Apartment");
-        } else if (readInt(scanner) == 1){
+        } else if (choice == 1){
             bookShortTermRoom.run();
-            // System.out.println("You selected: Short-Term Room");
         }
     };
 
@@ -113,18 +96,36 @@ public class Main {
 
     chooseBookingType.run();
 
+    // number of nights for short term room or
 
+    int roomChoice = readInt(scanner);
+    RoomRental chosenRoom = (roomChoice == 2) ? cozyCabin : beachRoom;
 
-    int aptChoice = readInt(scanner);
-    ApartmentRental chosenApt = (aptChoice == 2) ? suburbApt : cityLoft;
-
-    System.out.print("Number of months: ");
-    int months = readInt(scanner);
+    System.out.print("Number of nights: ");
+    int nights = readInt(scanner);
 
     System.out.print("Discount code (Enter to skip): ");
-    String aptCode = scanner.nextLine().trim();
+    String roomCode = scanner.nextLine().trim();
 
-    service.book(chosenApt,months,aptCode);
+    service.book(chosenRoom,nights,roomCode);
+
+
+
+
+    // number of months for long term apartment
+    Runnable longTermApartmentBooking = () -> { 
+
+        int aptChoice = readInt(scanner);
+        ApartmentRental chosenApt = (aptChoice == 2) ? suburbApt : cityLoft;
+        
+        System.out.print("Number of months: ");
+        int months = readInt(scanner);
+        
+        System.out.print("Discount code (Enter to skip): ");
+        String aptCode = scanner.nextLine().trim();
+        
+        service.book(chosenApt,months,aptCode);
+    };
 
     // // ── Live Modification Demo ───────────────────────────────────────────
     // // For your Expert Defense video: change 10% → 15% and rebook the room.
