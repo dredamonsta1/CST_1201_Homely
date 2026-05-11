@@ -46,10 +46,13 @@ public class Main {
             System.out.println("  WELCOME20 — $20 flat off any rental");
             System.out.println("  CLEANFEE5 — $5  flat off any rental");
         System.out.println();
-        // pressEnterToContinue(scanner);
+
+        
+       
     };
     
-    printWelcomeMessage.run();
+    
+    // printWelcomeMessage.run();
     
 
         // ── Booking 1: Short-Term Room ──────────────────────────────────────
@@ -97,29 +100,38 @@ public class Main {
         if (readInt(scanner) == 2) {
             bookLongTermApartment.run();
             // System.out.println("You selected: Long-Term Apartment");
-        } else {
+        } else if (readInt(scanner) == 1){
             bookShortTermRoom.run();
             // System.out.println("You selected: Short-Term Room");
         }
     };
+
+    printWelcomeMessage.run();
+     
+    System.out.println("Press Enter to continue...");
+    scanner.nextLine(); // ⏸ wait for Enter
+
     chooseBookingType.run();
 
 
 
-    // int aptChoice = readInt(scanner);
-    // ApartmentRental chosenApt = (aptChoice == 2) ? suburbApt : cityLoft;
+    int aptChoice = readInt(scanner);
+    ApartmentRental chosenApt = (aptChoice == 2) ? suburbApt : cityLoft;
 
-    // System.out.print("Number of months: ");
-    // int months = readInt(scanner);
+    System.out.print("Number of months: ");
+    int months = readInt(scanner);
 
-    // System.out.print("Discount code (Enter to skip): ");
-    // String aptCode = scanner.nextLine().trim();
+    System.out.print("Discount code (Enter to skip): ");
+    String aptCode = scanner.nextLine().trim();
 
-    // service.book(chosenApt,months,aptCode);
+    service.book(chosenApt,months,aptCode);
 
     // // ── Live Modification Demo ───────────────────────────────────────────
     // // For your Expert Defense video: change 10% → 15% and rebook the room.
-    // System.out.println("══ LIVE MODIFICATION DEMO ═══════════════");System.out.println("Changing SAVE10 from 10% → 15% and re-running the room booking...");save10Discount.setPercentage(0.15);service.book(chosenRoom,nights,"SAVE10");
+    // System.out.println("══ LIVE MODIFICATION DEMO ═══════════════");
+    // System.out.println("Changing SAVE10 from 10% → 15% and re-running the room booking...");
+    // save10Discount.setPercentage(0.15);
+    // service.book(chosenRoom,nights,"SAVE10");
 
     scanner.close();
     }
